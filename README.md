@@ -63,4 +63,14 @@ Send us the project and answer to those simple questions :
 
 ### Feature
 
-I developed a map to geolocate each person in the organization and have information about them when hovering over profiles. There was a Google API key in `index.html`, which gave me the idea. Depending on the project, it can be useful to have a visual display to see where collaborators are, especially those who are available. Example: A client of a project has an urgent problem in a given location, we can look at the map to find the nearest collaborator to send there.
+I developed a map to geolocate each person in the organization and have information about them when hovering over profiles. There was a Google API key in index.html, which gave me the idea. Depending on the project, it can be useful to have a visual display to see where collaborators are, especially those who are available. Example: A client of a project has an urgent problem in a given location, we can look at the map to find the nearest collaborator to send there.
+
+#### Benefits of using the map feature
+
+- Improving collaboration: By having a visual display of where team members are located, it can help to foster collaboration and communication within the team, as well as enable team members to better understand each other's locations and time zones.
+
+- Enhancing productivity: With the ability to quickly see where team members are located, it can be easier to delegate tasks and make informed decisions about who is best suited to tackle a particular problem or project.
+
+- Streamlining communication: Having a map feature can make it easier to quickly find and contact team members who are geographically close to a particular location or who have expertise in a certain area.
+
+- Supporting remote work: In an increasingly remote and distributed work environment, having a map feature can help team members feel more connected and provide a sense of presence, even if they are physically located in different parts of the world.
