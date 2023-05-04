@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const router = express.Router();
+const fs = require("fs");
 
 const UserObject = require("../models/user");
 const AuthObject = require("../auth");
@@ -67,6 +68,12 @@ router.get("/", passport.authenticate("user", { session: false }), async (req, r
 router.put("/:id", passport.authenticate("user", { session: false }), async (req, res) => {
   try {
     const obj = await getLocation(req.body);
+
+    if (obj.avatar) {
+      const path = `/resources/avatar/${req.params.id}.png`;
+      fs.writeFileSync(`../app/public${path}`, obj.avatar.replace(/^data:image\/png;base64,/, ""), { encoding: 'base64' });
+      obj.avatar = path;
+    }
     const user = await UserObject.findByIdAndUpdate(req.params.id, obj, { new: true });
     res.status(200).send({ ok: true, user });
   } catch (error) {
