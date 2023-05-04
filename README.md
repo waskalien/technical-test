@@ -74,3 +74,11 @@ I developed a map to geolocate each person in the organization and have informat
 - Streamlining communication: Having a map feature can make it easier to quickly find and contact team members who are geographically close to a particular location or who have expertise in a certain area.
 
 - Supporting remote work: In an increasingly remote and distributed work environment, having a map feature can help team members feel more connected and provide a sense of presence, even if they are physically located in different parts of the world.
+
+### Feedback
+
+After some adaptation time, the code and architecture are quite clear and understandable. I followed the instructions step by step, and discovered some bugs while developing the feature. The Activities page was the one that I had the most difficulty understanding, probably because the unit used is not specified, but each unit actually represents 25 euros.
+
+From a technical point of view, I encountered relatively few difficulties, but the one that took me the most time was probably putting a custom icon on the map markers because I was trying to pass it an SVG. In the end, I decided to use the profile avatar photo instead. I also spent time splitting NewList() (app/src/scenes/user/list) in order to reuse selectors for the map page without duplicating code.
+
+#### For more information on the modifications made: `cat diff.txt`
