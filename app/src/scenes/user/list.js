@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import Loader from "../../components/loader";
 import LoadingButton from "../../components/loadingButton";
 import api from "../../services/api";
+import { InputAvatar } from "./view";
 
 const NewList = () => {
   const [users, setUsers] = useState(null);
@@ -98,6 +99,8 @@ export const Create = () => {
 
   const history = useHistory();
 
+  const [avatar, setAvatar] = useState("https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y");
+
   return (
     <div style={{ marginBottom: 10 }}>
       <div className="text-right">
@@ -130,9 +133,10 @@ export const Create = () => {
                 }
                 setSubmitting(false);
               }}>
-              {({ values, handleChange, handleSubmit, isSubmitting }) => (
+              {({ values, handleChange, handleSubmit, isSubmitting, setFieldValue }) => (
                 <React.Fragment>
                   <div>
+                    <InputAvatar avatar={avatar} setAvatar={setAvatar} setFieldValue={(value) => setFieldValue("avatar", value)} />
                     <div className="flex justify-between flex-wrap">
                       <div className="w-full md:w-[48%] mt-2">
                         <div className="text-[14px] text-[#212325] font-medium	">Name</div>
@@ -145,6 +149,10 @@ export const Create = () => {
                     </div>
                     <div className="flex justify-between flex-wrap mt-3">
                       {/* Password */}
+                      <div className="w-full md:w-[48%] mt-2">
+                        <div className="text-[14px] text-[#212325] font-medium	">Address</div>
+                        <input className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="address" value={values.address} onChange={handleChange} />
+                      </div>
                       <div className="w-full md:w-[48%] mt-2">
                         <div className="text-[14px] text-[#212325] font-medium	">Password</div>
                         <input className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="password" value={values.password} onChange={handleChange} />

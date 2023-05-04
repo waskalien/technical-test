@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import Loader from "../../components/loader";
 import LoadingButton from "../../components/loadingButton";
 import ProgressBar from "../../components/ProgressBar";
+import { InputAvatar } from "../user/view";
 
 import api from "../../services/api";
 const ProjectList = () => {
@@ -95,6 +96,8 @@ const Budget = ({ project }) => {
 const Create = ({ onChangeSearch }) => {
   const [open, setOpen] = useState(false);
 
+  const [avatar, setAvatar] = useState("https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y");
+
   return (
     <div className="mb-[10px] ">
       <div className="flex justify-between flex-wrap">
@@ -132,7 +135,7 @@ const Create = ({ onChangeSearch }) => {
             setOpen(false);
           }}>
           <div
-            className="w-full md:w-[60%] max-h-[200px] bg-[white] p-[25px] rounded-md"
+            className="w-full md:w-[60%] max-h-[300px] bg-[white] p-[25px] rounded-md"
             onClick={(e) => {
               e.stopPropagation();
             }}>
@@ -152,9 +155,10 @@ const Create = ({ onChangeSearch }) => {
                 }
                 setSubmitting(false);
               }}>
-              {({ values, handleChange, handleSubmit, isSubmitting }) => (
+              {({ values, handleChange, handleSubmit, isSubmitting, setFieldValue }) => (
                 <React.Fragment>
                   <div className="w-full md:w-6/12 text-left">
+                    <InputAvatar avatar={avatar} setAvatar={setAvatar} setFieldValue={(value) => setFieldValue("logo", value)} />
                     <div>
                       <div className="text-[14px] text-[#212325] font-medium	">Name</div>
                       <input className="projectsInput text-[14px] font-normal text-[#212325] rounded-[10px]" name="name" value={values.name} onChange={handleChange} />

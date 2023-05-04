@@ -6,6 +6,7 @@ import { useHistory, useParams } from "react-router-dom";
 import Loader from "../../components/loader";
 import LoadingButton from "../../components/loadingButton";
 import api from "../../services/api";
+import { fileToBase64 } from "../../utils";
 
 export default () => {
   const [user, setUser] = useState(null);
@@ -28,8 +29,24 @@ export default () => {
   );
 };
 
+export const InputAvatar = ({ avatar, setAvatar, setFieldValue }) => (
+  <div class="w-full md:w-[260px] mt-[10px] md:mt-0">
+    <div className="text-[14px] text-[#212325] font-medium">Avatar</div>
+    <label for="avatar" className="form-label">
+      <img src={avatar} alt="userlogo" className="rounded-full w-[80px] h-[80px] cursor-pointer" />
+    </label>
+    <input className="form-control" name="avatar" type="file" id="avatar" onChange={async (e) => {
+      const fileBase64 = await fileToBase64(e.target.files[0])
+      setFieldValue(fileBase64);
+      setAvatar(fileBase64);
+    }} />
+  </div>
+);
+
 const Detail = ({ user }) => {
   const history = useHistory();
+
+  const [avatar, setAvatar] = useState(user.avatar);
 
   async function deleteData() {
     const confirm = window.confirm("Are you sure ?");
@@ -51,9 +68,10 @@ const Detail = ({ user }) => {
           toast.error("Some Error!");
         }
       }}>
-      {({ values, handleChange, handleSubmit, isSubmitting }) => {
+      {({ values, handleChange, handleSubmit, isSubmitting, setFieldValue }) => {
         return (
           <React.Fragment>
+            <InputAvatar avatar={avatar} setAvatar={setAvatar} setFieldValue={(value) => setFieldValue("avatar", value)} />
             <div className="flex justify-between flex-wrap mt-4">
               <div className="w-full md:w-[260px] mt-[10px] md:mt-0 ">
                 <div className="text-[14px] text-[#212325] font-medium	">Name</div>

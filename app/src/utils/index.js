@@ -14,3 +14,15 @@ export function formatDate(date) {
     year: "numeric",
   });
 }
+
+export const fileToBase64 = (file) => {
+  return new Promise((resolve) => {
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+    } else {
+      console.log("no file")
+    }
+  });
+};

@@ -61,7 +61,7 @@ Send us the project and answer to those simple questions :
 
 8. It's possible to create the same user multiple times. To avoid this, you probably need to add "autoIndex: true" to the options of `mongoose.connect`, but you would need access to the server to restart the db to verify. Otherwise, the problem can be fixed by adding an independent check from `mongoose` when creating a user.
 
-### Feature
+### Map feature
 
 I developed a map to geolocate each person in the organization and have information about them when hovering over profiles. There was a Google API key in index.html, which gave me the idea. Depending on the project, it can be useful to have a visual display to see where collaborators are, especially those who are available. Example: A client of a project has an urgent problem in a given location, we can look at the map to find the nearest collaborator to send there.
 
@@ -74,6 +74,12 @@ I developed a map to geolocate each person in the organization and have informat
 - Streamlining communication: Having a map feature can make it easier to quickly find and contact team members who are geographically close to a particular location or who have expertise in a certain area.
 
 - Supporting remote work: In an increasingly remote and distributed work environment, having a map feature can help team members feel more connected and provide a sense of presence, even if they are physically located in different parts of the world.
+
+### Other features
+
+- Addresses are reformatted correctly with the Google API
+- Ability to choose a user's avatar
+- Ability to choose a project's logo
 
 ### Feedback
 

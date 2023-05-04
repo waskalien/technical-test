@@ -5,6 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 import Loader from "../../components/loader";
 import LoadingButton from "../../components/loadingButton";
 import api from "../../services/api";
+import { InputAvatar } from "../user/view";
 
 import toast from "react-hot-toast";
 
@@ -12,12 +13,14 @@ export default function EditProject() {
   const [project, setProject] = useState(null);
   const [bufferOtherLink, setBufferOtherLink] = useState("");
   const [bufferOtherLinkLabel, setBufferOtherLinkLabel] = useState("");
+  const [avatar, setAvatar] = useState("https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y")
   const { id } = useParams();
 
   useEffect(() => {
     (async () => {
       const { data: u } = await api.get(`/project/${id}`);
       setProject(u);
+      setAvatar(u.logo);
     })();
   }, []);
 
@@ -56,10 +59,11 @@ export default function EditProject() {
                 toast.error("Some Error!");
               }
             }}>
-            {({ values, handleChange, handleSubmit, isSubmitting }) => (
+            {({ values, handleChange, handleSubmit, isSubmitting, setFieldValue }) => (
               <React.Fragment>
                 <div className="flex gap-4 pl-4 pt-4">
-                  {project.logo && <img className="w-[85px] h-[85px] border border-[#E5EAEF] rounded-[8px]" src={project.logo} alt="ProjectImage.png" />}
+                  {/* {project.logo && <img className="w-[85px] h-[85px] border border-[#E5EAEF] rounded-[8px]" src={project.logo} alt="ProjectImage.png" />} */}
+                  <InputAvatar avatar={avatar} setAvatar={setAvatar} setFieldValue={(value) => setFieldValue("logo", value)} />
                 </div>
 
                 <div className="py-3 px-4">

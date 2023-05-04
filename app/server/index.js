@@ -9,6 +9,7 @@ console.log("coucou");
 
 // app.use(hsts({ maxAge: 31536000, includeSubDomains: true, preload: true }));
 app.use(express.static(path.join(__dirname, "../build")));
+app.use(express.static(path.join(__dirname, "../public")))
 
 app.route("*").all((req, res) => {
   res.status(200).sendFile(path.join(__dirname, "/../build/index.html"));

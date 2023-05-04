@@ -16,7 +16,7 @@ const MapMarker = ({ user }) => {
   const [open, setOpen] = useState(false);
 
     const infoBoxOptions = {
-      pixelOffset: new window.google.maps.Size(-100, 5),
+      pixelOffset: new window.google.maps.Size(-125, 5),
       boxStyle: { width: '250px', padding: "5px 10px", background: "rgba(255, 255, 255, 1)", zIndex: 2, borderRadius: '16px' },
       closeBoxURL: '',
     };
