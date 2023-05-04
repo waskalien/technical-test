@@ -10,6 +10,7 @@ import Activity from "./scenes/activity";
 import Auth from "./scenes/auth";
 import Project from "./scenes/project";
 import User from "./scenes/user";
+import Map from "./scenes/map";
 
 import Account from "./scenes/account";
 
@@ -59,6 +60,7 @@ const App = () => {
 
                 <RestrictedRoute path="/account" component={Account} />
                 <RestrictedRoute path="/project" component={Project} />
+                <RestrictedRoute path="/map" component={Map} />
                 <RestrictedRoute path="/" component={Home} />
               </Switch>
             </main>

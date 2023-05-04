@@ -5,7 +5,7 @@ const router = express.Router();
 const UserObject = require("../models/user");
 const AuthObject = require("../auth");
 
-const { validatePassword } = require("../utils");
+const { validatePassword, getLocation } = require("../utils");
 
 const UserAuth = new AuthObject(UserObject);
 
@@ -66,8 +66,7 @@ router.get("/", passport.authenticate("user", { session: false }), async (req, r
 
 router.put("/:id", passport.authenticate("user", { session: false }), async (req, res) => {
   try {
-    const obj = req.body;
-
+    const obj = await getLocation(req.body);
     const user = await UserObject.findByIdAndUpdate(req.params.id, obj, { new: true });
     res.status(200).send({ ok: true, user });
   } catch (error) {
